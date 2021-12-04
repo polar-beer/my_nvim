@@ -39,23 +39,30 @@ call plug#begin()
   "「call」の間にプラグインを記述。 "
   "「:PlugInstall」で読み込み。     "
   "「:PlugStatus」でステータス確認。"
+  "「:PlugClean」対象プラグインを   "
+  "              コメントアウトして "
+  "              アンインストール   "
   """""""""""""""""""""""""""""""""""
   Plug 'ntk148v/vim-horizon' " ■ vim-horizon : Vs-Codeっぽい配色にしてくれる。Cf. https://github.com/ntk148v/vim-horizon
   Plug 'preservim/nerdtree'  " ■ nerdtree : DOMツリーをサイドバーとして表示。「ctrl+w+w」Cf. https://github.com/preservim/nerdtree
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } " ■ fzf：高速でファイル検索ができる。「:FZF」Cf.https://github.com/junegunn/fzf 
-  " ■ fugitive ：Vim内でgitコマンドを使用できる。i.g.「:Git blame」Cf. https://github.com/tpope/vim-fugitive
-  " ■ vim-gitgutter：自身の編集箇所を明示的にクイック確認可能。 Cf. https://github.com/airblade/vim-gitgutter
-  " ■ vim-commnetary： Cf. https://github.com/tpope/vim-commentary
+  Plug 'neoclide/coc.nvim', {'branch': 'release'} " ■ coc.nvim：補完機能。 Cf. https://github.com/neoclide/coc.nvim
+  " Plug 'sheerun/vim-polyglot' " ■ vim-polyglot：シンタックス等変更(i.g. .csv)。 Cf. https://github.com/sheerun/vim-polyglot
 call plug#end()
 
+" [vim-plug]以外のプラグイン。
+" ■ vim-fugitive ：Vim内でgitコマンドを使用できる(i.g.「:Git blame」)。Cf. https://github.com/tpope/vim-fugitive
+" ■ vim-gitgutter：自身の編集箇所を明示的にクイック確認可能。 Cf. https://github.com/airblade/vim-gitgutter
+" ■ vim-commnetary：「v -visual mode」で選択して、「gc」を末尾につけるだけ。Cf. https://github.com/tpope/vim-commentary
+" ■ coc.nvim：補完機能。 Cf. https://github.com/neoclide/coc.nvim
 
 " ■ vim-horizon
 " if you don't set this option, this color might not correct.
-set termguicolors
-colorscheme horizon
+"set termguicolors
+"colorscheme horizon
 " lightline.
-let g:lightline = {}
-let g:lightline.colorscheme = 'horizon'
+"let g:lightline = {}
+"let g:lightline.colorscheme = 'horizon'
 
 " ■ nerdtree : DOMツリーをサイドバーとして表示。
 " Start NERDTree when Vim is started without file arguments.
@@ -64,5 +71,4 @@ autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | NERDTree | endif
 
 " ■ vim-gitgutter
 "let g:gitgutter_highlight_lines = 1 " 変更箇所をハイライト
-
 
